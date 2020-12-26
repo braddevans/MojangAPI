@@ -39,7 +39,7 @@ public class PlayerInfoHandler {
     }
 
     public UUID fetchUUID(String playerName, boolean cache) {
-        if(!httpHandler.checkService(MojangService.MOJANG_API)) {
+        if (!httpHandler.checkService(MojangService.MOJANG_API)) {
             System.out.println("Unavaiable service: " + MojangService.MOJANG_API.getKey());
             return null;
         }
@@ -48,7 +48,7 @@ public class PlayerInfoHandler {
             assert conn != null;
             UsernameToUUIDJson data = (UsernameToUUIDJson) httpHandler.fetchJSON(conn, UsernameToUUIDJson.class);
             String stringUUID = (String) data.getClass().getDeclaredField("id").get(data);
-            stringUUID = String.format("%s-%s-%s-%s-%s", stringUUID.substring(0,8), stringUUID.substring(8,12), stringUUID.substring(12,16), stringUUID.substring(16,20), stringUUID.substring(20));
+            stringUUID = String.format("%s-%s-%s-%s-%s", stringUUID.substring(0, 8), stringUUID.substring(8, 12), stringUUID.substring(12, 16), stringUUID.substring(16, 20), stringUUID.substring(20));
             UUID result = UUID.fromString(stringUUID);
             if (cache) {
                 api.getMojangAPICache().saveUUID(playerName, result);
@@ -66,7 +66,7 @@ public class PlayerInfoHandler {
     }
 
     private <T> PlayerProfile getPlayerProfile(UUID uuid, Class<T> classType) {
-        if(!httpHandler.checkService(MojangService.MOJANG_API)) {
+        if (!httpHandler.checkService(MojangService.MOJANG_API)) {
             System.out.println("Unavaiable service: " + MojangService.MOJANG_API.getKey());
             return new PlayerProfileJson();
         }

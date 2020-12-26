@@ -18,4 +18,5 @@
 
 package me.PauMAVA.MojangAPI.object;
 
-public class PlayerProfile {}
+public class PlayerProfile {
+}

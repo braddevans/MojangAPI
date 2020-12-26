@@ -24,7 +24,6 @@ import me.PauMAVA.MojangAPI.MojangStatusJson;
 import me.PauMAVA.MojangAPI.object.PlayerProfileJson;
 import me.PauMAVA.MojangAPI.object.RawPlayerProfileJson;
 import me.PauMAVA.MojangAPI.object.UsernameToUUIDJson;
-import me.PauMAVA.MojangAPI.services.MojangService;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
@@ -35,7 +34,7 @@ import java.net.URL;
 
 public class HTTPHandler {
 
-    private MojangAPI api;
+    private final MojangAPI api;
 
     public HTTPHandler(MojangAPI api) {
         this.api = api;
@@ -44,7 +43,7 @@ public class HTTPHandler {
     public HttpURLConnection getHTTPConnection(MojangService service, String... args) throws NullPointerException {
         try {
             StringBuilder sb = new StringBuilder("https://" + service.getKey());
-            for (String s: args) {
+            for (String s : args) {
                 sb.append("/").append(s);
             }
             if (api.isVerbose()) {
@@ -63,11 +62,11 @@ public class HTTPHandler {
         conn.setAllowUserInteraction(false);
         conn.connect();
         int status = conn.getResponseCode();
-        if(status == 200 || status == 201) {
+        if (status == 200 || status == 201) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             StringBuilder builder = new StringBuilder();
             String nextString;
-            while((nextString = reader.readLine()) != null) {
+            while ((nextString = reader.readLine()) != null) {
                 builder.append(nextString).append("\n");
             }
             reader.close();
@@ -76,7 +75,8 @@ public class HTTPHandler {
             }
             GsonBuilder gson = new GsonBuilder();
             return gson.create().fromJson(reformatJSON(builder, destinationClass), destinationClass);
-        } else {
+        }
+        else {
             return null;
         }
     }
@@ -86,7 +86,7 @@ public class HTTPHandler {
             URL statusServer = new URL("https://status.mojang.com/check");
             HttpURLConnection conn = (HttpURLConnection) statusServer.openConnection();
             MojangStatusJson data = (MojangStatusJson) fetchJSON(conn, MojangStatusJson.class);
-            if(data == null) {
+            if (data == null) {
                 return false;
             }
             String status = (String) data.getClass().getDeclaredField(service.name()).get(data);
@@ -99,14 +99,17 @@ public class HTTPHandler {
     }
 
     private <T> String reformatJSON(StringBuilder originalJSON, Class<T> destinationClass) {
-        if(destinationClass.equals(MojangStatusJson.class)) {
+        if (destinationClass.equals(MojangStatusJson.class)) {
             return originalJSON.toString().replace("{", "").replace("}", "").replace("[", "{").replace("]", "}");
-        } else if(destinationClass.equals(UsernameToUUIDJson.class)) {
+        }
+        else if (destinationClass.equals(UsernameToUUIDJson.class)) {
             return originalJSON.toString();
-        } else if(destinationClass.equals(PlayerProfileJson.class)) {
+        }
+        else if (destinationClass.equals(PlayerProfileJson.class)) {
             String section = StringUtils.substringBetween(originalJSON.toString(), "\"decoded\": {", "\"timestamp\":");
             return "{" + section.substring(0, section.lastIndexOf(",")) + "}";
-        } else if (destinationClass.equals(RawPlayerProfileJson.class)) {
+        }
+        else if (destinationClass.equals(RawPlayerProfileJson.class)) {
             return "{" + StringUtils.substringBetween(originalJSON.toString(), "\"raw\": {", "\"status\":").replace("],", "]") + "}";
         }
         return "";

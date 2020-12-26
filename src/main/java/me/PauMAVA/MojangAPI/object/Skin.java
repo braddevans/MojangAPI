@@ -21,7 +21,8 @@ package me.PauMAVA.MojangAPI.object;
 public class Skin {
     private String url;
 
-    Skin() {}
+    Skin() {
+    }
 
     public String getUrl() {
         return url;

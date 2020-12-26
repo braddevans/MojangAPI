@@ -21,7 +21,8 @@ package me.PauMAVA.MojangAPI.object;
 public class Cape {
     private String url;
 
-    Cape() {}
+    Cape() {
+    }
 
     public String getUrl() {
         return url;

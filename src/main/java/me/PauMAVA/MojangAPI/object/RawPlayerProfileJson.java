@@ -32,7 +32,7 @@ public class RawPlayerProfileJson extends PlayerProfile {
     }
 
     public UUID getUUID() {
-        return UUID.fromString(String.format("%s-%s-%s-%s-%s", id.substring(0,8), id.substring(8,12), id.substring(12,16), id.substring(16,20), id.substring(20)));
+        return UUID.fromString(String.format("%s-%s-%s-%s-%s", id.substring(0, 8), id.substring(8, 12), id.substring(12, 16), id.substring(16, 20), id.substring(20)));
     }
 
     public String getName() {

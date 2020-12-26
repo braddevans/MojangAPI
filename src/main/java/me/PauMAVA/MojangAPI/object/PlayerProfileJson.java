@@ -18,12 +18,9 @@
 
 package me.PauMAVA.MojangAPI.object;
 
-import me.PauMAVA.MojangAPI.object.PlayerProfile;
-import me.PauMAVA.MojangAPI.object.Textures;
-
 import java.util.UUID;
 
-public class PlayerProfileJson  extends PlayerProfile {
+public class PlayerProfileJson extends PlayerProfile {
 
     String profileId;
     String profileName;
@@ -35,7 +32,7 @@ public class PlayerProfileJson  extends PlayerProfile {
     }
 
     public UUID getUUID() {
-        return UUID.fromString(String.format("%s-%s-%s-%s-%s", profileId.substring(0,8), profileId.substring(8,12), profileId.substring(12,16), profileId.substring(16,20), profileId.substring(20)));
+        return UUID.fromString(String.format("%s-%s-%s-%s-%s", profileId.substring(0, 8), profileId.substring(8, 12), profileId.substring(12, 16), profileId.substring(16, 20), profileId.substring(20)));
     }
 
     public String getName() {

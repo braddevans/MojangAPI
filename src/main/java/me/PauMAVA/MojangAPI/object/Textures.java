@@ -21,7 +21,8 @@ package me.PauMAVA.MojangAPI.object;
 public class Textures {
     private Skin SKIN;
 
-    Textures() {}
+    Textures() {
+    }
 
     public Skin getSkin() {
         return SKIN;

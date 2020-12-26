@@ -21,13 +21,15 @@ package me.PauMAVA.MojangAPI;
 import me.PauMAVA.MojangAPI.object.PlayerProfile;
 import me.PauMAVA.MojangAPI.object.PlayerProfileJson;
 import me.PauMAVA.MojangAPI.object.RawPlayerProfileJson;
+import org.apache.commons.io.FileUtils;
 
-import java.util.HashMap;
-import java.util.UUID;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 public class MojangAPICache {
 
-    private MojangAPI api;
+    private final MojangAPI api;
 
     private HashMap<String, UUID> UUIDcache;
     private HashMap<UUID, PlayerProfileJson> decodedProfileCache;
@@ -47,7 +49,8 @@ public class MojangAPICache {
     public <T> void saveProfile(UUID uuid, PlayerProfile profile, Class<T> classType) {
         if (classType.equals(PlayerProfileJson.class)) {
             this.decodedProfileCache.put(uuid, (PlayerProfileJson) profile);
-        } else if (classType.equals(RawPlayerProfileJson.class)) {
+        }
+        else if (classType.equals(RawPlayerProfileJson.class)) {
             this.rawProfileCache.put(uuid, (RawPlayerProfileJson) profile);
         }
     }
@@ -104,6 +107,36 @@ public class MojangAPICache {
         return rawProfileCache.get(uuid);
     }
 
+    public void saveCacheToFile(File file) {
+        List<String> lines = new ArrayList<>();
+
+        for (Map.Entry<String, UUID> entry : UUIDcache.entrySet()) {
+            lines.add(entry.getKey() + ":" + entry.getValue());
+        }
+
+        try {
+            System.out.printf("Writing: %d items into CacheFile.%n", lines.size());
+            FileUtils.writeLines(file, lines);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadCacheFromFile(File file) {
+        List<String> contents = null;
+        try {
+            contents = FileUtils.readLines(file, "UTF-8");
+            System.out.printf("Reading: %d items from CacheFile.%n", contents.size());
+
+            for (String line : contents) {
+                String[] item = line.split(":");
+                saveUUID(item[0], UUID.fromString(item[1]));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void cleanCache(String playerName) {
         UUID uuid = checkUUID(playerName);
@@ -115,6 +148,7 @@ public class MojangAPICache {
         this.decodedProfileCache.remove(uuid);
         this.rawProfileCache.remove(uuid);
     }
+
     public void cleanCache() {
         this.UUIDcache = new HashMap<>();
         this.decodedProfileCache = new HashMap<>();

@@ -42,6 +42,10 @@ public class MojangAPI {
         this.verbose = verbose;
     }
 
+    public static MojangAPICache getStaticCache() {
+        return staticCache;
+    }
+
     public HTTPHandler getHttpHandler() {
         return this.httpHandler;
     }
@@ -60,9 +64,5 @@ public class MojangAPI {
 
     public void setVerbose(boolean verbose) {
         this.verbose = verbose;
-    }
-
-    public static MojangAPICache getStaticCache() {
-        return staticCache;
     }
 }

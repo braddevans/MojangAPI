@@ -19,6 +19,6 @@
 package me.PauMAVA.MojangAPI.object;
 
 public class UsernameToUUIDJson {
-       String id;
-       String name;
+    String id;
+    String name;
 }
