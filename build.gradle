@@ -8,6 +8,7 @@ version = '2020-0.4'
 description = 'MojangAPI'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
+
 repositories {
     mavenLocal()
     jcenter()
@@ -26,7 +27,11 @@ dependencies {
 }
 
 
+compileJava.options.encoding = 'UTF-8'
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 
 test {
     useJUnitPlatform()
