@@ -18,6 +18,9 @@
 
 package me.PauMAVA.MojangAPI;
 
+import me.PauMAVA.MojangAPI.services.HTTPHandler;
+import me.PauMAVA.MojangAPI.services.PlayerInfoHandler;
+
 public class MojangAPI {
 
     private static final MojangAPICache staticCache = new MojangAPICache(new MojangAPI());

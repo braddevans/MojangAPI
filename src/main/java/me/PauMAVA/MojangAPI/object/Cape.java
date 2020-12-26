@@ -16,14 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.object;
 
-public class Textures {
-    private Skin SKIN;
+public class Cape {
+    private String url;
 
-    Textures() {}
+    Cape() {}
 
-    public Skin getSkin() {
-        return SKIN;
+    public String getUrl() {
+        return url;
     }
 }

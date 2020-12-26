@@ -1,6 +1,6 @@
 /*
  * MojangAPI
- * Copyright (c) 2019  Pau Machetti Vallverdú
+ * Copyright (c) 2019  Pau Machetti Vallverdï¿½
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.object;
+
+import me.PauMAVA.MojangAPI.object.PlayerProfile;
+import me.PauMAVA.MojangAPI.object.Textures;
 
 import java.util.UUID;
 

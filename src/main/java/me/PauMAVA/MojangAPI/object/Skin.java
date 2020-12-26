@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.object;
 
 public class Skin {
     private String url;

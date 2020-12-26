@@ -18,6 +18,10 @@
 
 package me.PauMAVA.MojangAPI;
 
+import me.PauMAVA.MojangAPI.object.PlayerProfile;
+import me.PauMAVA.MojangAPI.object.PlayerProfileJson;
+import me.PauMAVA.MojangAPI.object.RawPlayerProfileJson;
+
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -29,18 +33,18 @@ public class MojangAPICache {
     private HashMap<UUID, PlayerProfileJson> decodedProfileCache;
     private HashMap<UUID, RawPlayerProfileJson> rawProfileCache;
 
-    MojangAPICache(MojangAPI api) {
+    public MojangAPICache(MojangAPI api) {
         this.api = api;
         this.UUIDcache = new HashMap<>();
         this.decodedProfileCache = new HashMap<>();
         this.rawProfileCache = new HashMap<>();
     }
 
-    void saveUUID(String playerName, UUID uuid) {
+    public void saveUUID(String playerName, UUID uuid) {
         this.UUIDcache.put(playerName, uuid);
     }
 
-    <T> void saveProfile(UUID uuid, PlayerProfile profile, Class<T> classType) {
+    public <T> void saveProfile(UUID uuid, PlayerProfile profile, Class<T> classType) {
         if (classType.equals(PlayerProfileJson.class)) {
             this.decodedProfileCache.put(uuid, (PlayerProfileJson) profile);
         } else if (classType.equals(RawPlayerProfileJson.class)) {

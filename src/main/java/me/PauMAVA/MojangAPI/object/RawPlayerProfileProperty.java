@@ -1,6 +1,6 @@
 /*
  * MojangAPI
- * Copyright (c) 2019  Pau Machetti Vallverd�
+ * Copyright (c) 2019  Pau Machetti Vallverdú
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,28 +16,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.object;
 
-public enum MojangService {
+public class RawPlayerProfileProperty {
 
-    MINECRAFT("minecraft.net"),
-    MINECRAFT_SESSION("session.minecraft.net"),
-    MOJANG_ACCOUNTS("account.mojang.com"),
-    MOJANG_AUTHSERVER("authserver.mojang.com"),
-    MOJANG_SESSIONSERVER("sessionserver.mojang.com"),
-    MOJANG_API("api.minetools.eu"),
-    MINECRAFT_TEXTURES("textures.minecraft.net"),
-    MOJANG_WEB("mojang.com"),
-    MOJANG_STATUS("status.mojang.com");
+    private String name;
+    private String signature;
+    private String value;
 
-    private final String service;
-
-    MojangService(String service) {
-        this.service = service;
+    public String getName() {
+        return name;
     }
 
-    public String getKey() {
-        return this.service;
+    public String getSignature() {
+        return signature;
     }
 
+    public String getValue() {
+        return value;
+    }
 }

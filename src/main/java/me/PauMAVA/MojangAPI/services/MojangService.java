@@ -1,6 +1,6 @@
 /*
  * MojangAPI
- * Copyright (c) 2019  Pau Machetti Vallverdú
+ * Copyright (c) 2019  Pau Machetti Vallverd�
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,30 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.services;
 
-import java.util.List;
-import java.util.UUID;
+public enum MojangService {
 
-public class RawPlayerProfileJson extends PlayerProfile {
+    MINECRAFT("minecraft.net"),
+    MINECRAFT_SESSION("session.minecraft.net"),
+    MOJANG_ACCOUNTS("account.mojang.com"),
+    MOJANG_AUTHSERVER("authserver.mojang.com"),
+    MOJANG_SESSIONSERVER("sessionserver.mojang.com"),
+    MOJANG_API("api.minetools.eu"),
+    MINECRAFT_TEXTURES("textures.minecraft.net"),
+    MOJANG_WEB("mojang.com"),
+    MOJANG_STATUS("status.mojang.com");
 
-    private String id;
-    private String name;
-    private List<RawPlayerProfileProperty> properties;
+    private final String service;
 
-    public String getId() {
-        return id;
+    MojangService(String service) {
+        this.service = service;
     }
 
-    public UUID getUUID() {
-        return UUID.fromString(String.format("%s-%s-%s-%s-%s", id.substring(0,8), id.substring(8,12), id.substring(12,16), id.substring(16,20), id.substring(20)));
+    public String getKey() {
+        return this.service;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public List<RawPlayerProfileProperty> getProperties() {
-        return properties;
-    }
 }

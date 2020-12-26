@@ -16,23 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.object;
 
-public class RawPlayerProfileProperty {
+public class Textures {
+    private Skin SKIN;
 
-    private String name;
-    private String signature;
-    private String value;
+    Textures() {}
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSignature() {
-        return signature;
-    }
-
-    public String getValue() {
-        return value;
+    public Skin getSkin() {
+        return SKIN;
     }
 }

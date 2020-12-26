@@ -16,9 +16,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.services;
 
 import com.google.gson.GsonBuilder;
+import me.PauMAVA.MojangAPI.MojangAPI;
+import me.PauMAVA.MojangAPI.MojangStatusJson;
+import me.PauMAVA.MojangAPI.object.PlayerProfileJson;
+import me.PauMAVA.MojangAPI.object.RawPlayerProfileJson;
+import me.PauMAVA.MojangAPI.object.UsernameToUUIDJson;
+import me.PauMAVA.MojangAPI.services.MojangService;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
@@ -27,15 +33,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class HTTPHandler {
+public class HTTPHandler {
 
     private MojangAPI api;
 
-    HTTPHandler(MojangAPI api) {
+    public HTTPHandler(MojangAPI api) {
         this.api = api;
     }
 
-    HttpURLConnection getHTTPConnection(MojangService service, String... args) throws NullPointerException {
+    public HttpURLConnection getHTTPConnection(MojangService service, String... args) throws NullPointerException {
         try {
             StringBuilder sb = new StringBuilder("https://" + service.getKey());
             for (String s: args) {
@@ -45,15 +51,14 @@ class HTTPHandler {
                 System.out.println(sb.toString());
             }
             URL statusServer = new URL(sb.toString());
-            HttpURLConnection conn = (HttpURLConnection) statusServer.openConnection();
-            return conn;
+            return (HttpURLConnection) statusServer.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    <T> Object fetchJSON(HttpURLConnection conn, Class<T> destinationClass) throws IOException, NullPointerException {
+    public <T> Object fetchJSON(HttpURLConnection conn, Class<T> destinationClass) throws IOException, NullPointerException {
         conn.setRequestMethod("GET");
         conn.setAllowUserInteraction(false);
         conn.connect();

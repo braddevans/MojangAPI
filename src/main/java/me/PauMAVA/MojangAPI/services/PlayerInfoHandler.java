@@ -16,7 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.services;
+
+import me.PauMAVA.MojangAPI.MojangAPI;
+import me.PauMAVA.MojangAPI.object.PlayerProfile;
+import me.PauMAVA.MojangAPI.object.PlayerProfileJson;
+import me.PauMAVA.MojangAPI.object.RawPlayerProfileJson;
+import me.PauMAVA.MojangAPI.object.UsernameToUUIDJson;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -27,12 +33,12 @@ public class PlayerInfoHandler {
     private final MojangAPI api;
     private final HTTPHandler httpHandler;
 
-    PlayerInfoHandler(MojangAPI api) {
+    public PlayerInfoHandler(MojangAPI api) {
         this.api = api;
         this.httpHandler = api.getHttpHandler();
     }
 
-    UUID fetchUUID(String playerName, boolean cache) {
+    public UUID fetchUUID(String playerName, boolean cache) {
         if(!httpHandler.checkService(MojangService.MOJANG_API)) {
             System.out.println("Unavaiable service: " + MojangService.MOJANG_API.getKey());
             return null;

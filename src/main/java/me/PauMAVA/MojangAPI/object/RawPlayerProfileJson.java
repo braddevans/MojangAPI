@@ -16,6 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.object;
 
-public class PlayerProfile {}
+import java.util.List;
+import java.util.UUID;
+
+public class RawPlayerProfileJson extends PlayerProfile {
+
+    private String id;
+    private String name;
+    private List<RawPlayerProfileProperty> properties;
+
+    public String getId() {
+        return id;
+    }
+
+    public UUID getUUID() {
+        return UUID.fromString(String.format("%s-%s-%s-%s-%s", id.substring(0,8), id.substring(8,12), id.substring(12,16), id.substring(16,20), id.substring(20)));
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<RawPlayerProfileProperty> getProperties() {
+        return properties;
+    }
+}
