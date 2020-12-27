@@ -24,13 +24,15 @@ public class testCacheSaving {
 
         Path path = FileSystems.getDefault().getPath("").toAbsolutePath();
         File file = new File(path.toFile() + File.separator + "cache.dat");
-        System.out.println(file.getAbsolutePath());
+        System.out.println("Writing file: " + file.getAbsolutePath());
         cache.saveCacheToFile(file);
         try {
             System.out.println(FileUtils.readLines(new File(path.toFile() + File.separator + "cache.dat")).toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println(" ");
+        System.out.println(" ");
     }
 
     @Test
@@ -38,8 +40,10 @@ public class testCacheSaving {
         Path path = FileSystems.getDefault().getPath("").toAbsolutePath();
         File cacheFile = new File(path.toFile() + File.separator + "cache.dat");
         cache.cleanCache();
+        System.out.println(" ");
         System.out.println("Cleared Cache Size: " + cache.cacheSize());
 
+        System.out.println("Loading File: " + cacheFile.getAbsolutePath());
         cache.loadCacheFromFile(cacheFile);
 
         System.out.println("new Cache Size: " + cache.cacheSize());
