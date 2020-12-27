@@ -138,6 +138,10 @@ public class MojangAPICache {
         }
     }
 
+    public int cacheSize(){
+        return UUIDcache.size();
+    }
+
     public void cleanCache(String playerName) {
         UUID uuid = checkUUID(playerName);
         this.UUIDcache.remove(playerName);

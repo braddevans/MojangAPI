@@ -1,6 +1,6 @@
 /*
  * MojangAPI
- * Copyright (c) 2019  Pau Machetti Vallverdú
+ * Copyright (c) 2019  Pau Machetti Vallverdu
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,10 +39,6 @@ public class PlayerInfoHandler {
     }
 
     public UUID fetchUUID(String playerName, boolean cache) {
-        if (!httpHandler.checkService(MojangService.MOJANG_API)) {
-            System.out.println("Unavaiable service: " + MojangService.MOJANG_API.getKey());
-            return null;
-        }
         try {
             HttpURLConnection conn = httpHandler.getHTTPConnection(MojangService.MOJANG_API, "uuid", playerName);
             assert conn != null;

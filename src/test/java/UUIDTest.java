@@ -33,6 +33,6 @@ public class UUIDTest {
 
     @Test
     public void testUUID() {
-        assertEquals(mojangAPI.getPlayerInfoHandler().fetchUUID("GoldLord_"), UUID.fromString("0006f9f3-bde9-4d12-9271-18502d8053dd"));
+        assertEquals(mojangAPI.getPlayerInfoHandler().fetchUUID("GoldLord_"), UUID.fromString("0006f9f3-bde9-4d12-9271-18502d8053dd"), "fetchUUID(\"GoldLord_\") must return, 0006f9f3-bde9-4d12-9271-18502d8053dd");
     }
 }

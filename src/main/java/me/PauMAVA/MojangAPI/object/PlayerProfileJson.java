@@ -22,10 +22,10 @@ import java.util.UUID;
 
 public class PlayerProfileJson extends PlayerProfile {
 
-    String profileId;
-    String profileName;
+    public String profileId;
+    public String profileName;
 
-    Textures textures;
+    public Textures textures;
 
     public String getId() {
         return profileId;

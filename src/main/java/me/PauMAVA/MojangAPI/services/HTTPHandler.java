@@ -20,7 +20,7 @@ package me.PauMAVA.MojangAPI.services;
 
 import com.google.gson.GsonBuilder;
 import me.PauMAVA.MojangAPI.MojangAPI;
-import me.PauMAVA.MojangAPI.MojangStatusJson;
+import me.PauMAVA.MojangAPI.object.MojangStatusJson;
 import me.PauMAVA.MojangAPI.object.PlayerProfileJson;
 import me.PauMAVA.MojangAPI.object.RawPlayerProfileJson;
 import me.PauMAVA.MojangAPI.object.UsernameToUUIDJson;

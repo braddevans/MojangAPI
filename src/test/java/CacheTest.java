@@ -17,8 +17,8 @@
  */
 
 import me.PauMAVA.MojangAPI.MojangAPI;
-import me.PauMAVA.MojangAPI.PlayerProfileJson;
-import me.PauMAVA.MojangAPI.RawPlayerProfileJson;
+import me.PauMAVA.MojangAPI.object.PlayerProfileJson;
+import me.PauMAVA.MojangAPI.object.RawPlayerProfileJson;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

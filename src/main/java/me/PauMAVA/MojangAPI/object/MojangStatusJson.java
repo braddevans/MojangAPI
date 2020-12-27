@@ -1,6 +1,6 @@
 /*
  * MojangAPI
- * Copyright (c) 2019  Pau Machetti Vallverdú
+ * Copyright (c) 2019  Pau Machetti Valverde
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,33 +16,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.PauMAVA.MojangAPI;
+package me.PauMAVA.MojangAPI.object;
 
 import com.google.gson.annotations.SerializedName;
 
 public class MojangStatusJson {
     @SerializedName("minecraft.net")
-    String MINECRAFT;
+    public String MINECRAFT;
     @SerializedName("session.minecraft.net")
-    String MINECRAFT_SESSION;
+    public String MINECRAFT_SESSION;
     @SerializedName("account.mojang.com")
-    String MOJANG_ACCOUNTS;
+    public String MOJANG_ACCOUNTS;
     @SerializedName("auth.mojang.com")
-    String MOJANG_AUTH;
+    public String MOJANG_AUTH;
     @SerializedName("skins.minecraft.net")
-    String MINECRAFT_SKINS;
+    public String MINECRAFT_SKINS;
     @SerializedName("authserver.mojang.com")
-    String MOJANG_AUTHSERVER;
+    public String MOJANG_AUTHSERVER;
     @SerializedName("sessionserver.mojang.com")
-    String MOJANG_SESSIONSERVER;
+    public String MOJANG_SESSIONSERVER;
     @SerializedName("api.mojang.com")
-    String MOJANG_API;
+    public String MOJANG_API;
     @SerializedName("textures.minecraft.net")
-    String MINECRAFT_TEXTURES;
+    public String MINECRAFT_TEXTURES;
     @SerializedName("mojang.com")
-    String MOJANG_WEB;
+    public String MOJANG_WEB;
     @SerializedName("status.mojang.com")
-    String MOJANG_STATUS;
+    public String MOJANG_STATUS;
 
     public String getMINECRAFT() {
         return MINECRAFT;
